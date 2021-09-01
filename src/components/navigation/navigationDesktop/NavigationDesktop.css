@@ -1,4 +1,30 @@
 .navDesk__container {
-  background-color: aquamarine;
-  height: 4vh;
+  background-color: tomato;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  justify-content: flex-end;
+  place-items: center;
+}
+.navDesk__container button {
+  width: 6em;
+  margin-right: 1em;
+  font-size: 2rem;
+  height: 3em;
+  background-color: tomato;
+  border: none;
+}
+.navDesk__container button:hover {
+  background-color: teal;
+  cursor: pointer;
+}
+.btn--home {
+  grid-column-start: 9;
+}
+.btn--about {
+  grid-column-start: 10;
+}
+.logo {
+  grid-column-start: 1;
+  margin-left: 0.5em;
 }
