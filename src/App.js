@@ -1,11 +1,12 @@
-
+import { Routes } from "./routes/Routes"
+import { Navigation } from "../src/components/navigation/Navigation"
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
-  );
+    <Routes>
+      <Navigation />
+    </Routes>
+  )
 }
 
-export default App;
+export default App
