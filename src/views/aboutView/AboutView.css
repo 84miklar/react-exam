@@ -1,0 +1,8 @@
+.about__container {
+  background-image: url("../../shared/img/popcorn.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 87vh;
+  text-align: center;
+  margin-top: 0;
+}

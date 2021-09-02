@@ -2,16 +2,20 @@ import React from "react"
 import { useHistory } from "react-router-dom"
 import RoutingPath from "../../../routes/RoutingPath"
 import "./NavigationDesktop.css"
-import { Logo } from "../../../shared/img/Logo"
+import logo from "../../../shared/img/chairLogo.png"
 
 export const NavigationDesktop = () => {
   const history = useHistory()
 
   return (
     <nav className="navDesk__container">
-      <span className="logo">
-        <Logo />
-      </span>
+      <img
+        onClick={() => history.push(RoutingPath.homeView)}
+        className="logo"
+        src={logo}
+        alt="logo"
+      ></img>
+
       <button
         className="btn--home"
         onClick={() => history.push(RoutingPath.homeView)}

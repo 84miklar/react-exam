@@ -1,6 +1,6 @@
 .navDesk__container {
-  background-color: tomato;
-  height: max-content;
+  background-color: #852024;
+  height: fit-content;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   justify-content: flex-end;
@@ -8,14 +8,16 @@
 }
 .navDesk__container button {
   width: 6em;
-  margin-right: 1em;
+  margin-right: 0.5em;
   font-size: 2rem;
-  height: 3em;
-  background-color: tomato;
+  height: 2.5em;
+  color: #cfb584;
+  background-color: #852024;
   border: none;
+  border-radius: 15px;
 }
 .navDesk__container button:hover {
-  background-color: teal;
+  background-color: #103c61;
   cursor: pointer;
 }
 .btn--home {
@@ -26,5 +28,10 @@
 }
 .logo {
   grid-column-start: 1;
-  margin-left: 0.5em;
+  margin-left: 1.5em;
+  width: 10em;
+  cursor: pointer;
+}
+.logo:hover {
+  transform: scale(1.1);
 }

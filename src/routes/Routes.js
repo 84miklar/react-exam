@@ -4,6 +4,7 @@ import RoutingPath from "./RoutingPath"
 import { AboutView } from "../views/aboutView/AboutView"
 import { HomeView } from "../views/homeView/HomeView"
 import { FourOFour } from "../views/404/FourOFour"
+import { MovieView } from "../views/movieView/MovieView"
 
 export const Routes = ({ children }) => {
   return (
@@ -11,6 +12,7 @@ export const Routes = ({ children }) => {
       {children}
       <Switch>
         <Route exact path={RoutingPath.aboutView} component={AboutView} />
+        <Route exact path={RoutingPath.movieView} component={MovieView} />
         <Route exact path={RoutingPath.homeView} component={HomeView} />
         <Route path="*">
           <FourOFour />
