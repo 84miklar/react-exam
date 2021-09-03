@@ -31,7 +31,6 @@ export const HomeView = () => {
           <Card movie={2} />
           <Card movie={3} />
           <Card movie={4} />
-          <Card movie={5} />
         </div>
       )
     }
