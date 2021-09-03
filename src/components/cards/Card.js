@@ -18,7 +18,7 @@ export const Card = (props) => {
             data.data.results[props.movie].poster_path
           }`}
           alt="movie poster"
-          onClick={() => history.push(RoutingPath.movieView)}
+          onClick={() => history.push(RoutingPath.movieView, props.movie)}
         ></img>
       )
     } else {
@@ -33,8 +33,8 @@ export const Card = (props) => {
   if (data) {
     return (
       <div>
-        <h3>{data.data.results[props.movie].original_title}</h3>
         {showPoster()}
+        <h3>{data.data.results[props.movie].original_title}</h3>
       </div>
     )
   }
