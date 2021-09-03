@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/react-exam/static/css/main.a617e044.chunk.css",
-    "main.js": "/react-exam/static/js/main.b76e22ec.chunk.js",
-    "main.js.map": "/react-exam/static/js/main.b76e22ec.chunk.js.map",
-    "runtime-main.js": "/react-exam/static/js/runtime-main.fb614725.js",
-    "runtime-main.js.map": "/react-exam/static/js/runtime-main.fb614725.js.map",
-    "static/js/2.e062e33b.chunk.js": "/react-exam/static/js/2.e062e33b.chunk.js",
-    "static/js/2.e062e33b.chunk.js.map": "/react-exam/static/js/2.e062e33b.chunk.js.map",
-    "static/js/3.137da3b9.chunk.js": "/react-exam/static/js/3.137da3b9.chunk.js",
-    "static/js/3.137da3b9.chunk.js.map": "/react-exam/static/js/3.137da3b9.chunk.js.map",
+    "main.css": "/react-exam/static/css/main.116b8445.chunk.css",
+    "main.js": "/react-exam/static/js/main.0018a5a8.chunk.js",
+    "main.js.map": "/react-exam/static/js/main.0018a5a8.chunk.js.map",
+    "runtime-main.js": "/react-exam/static/js/runtime-main.26ade05c.js",
+    "runtime-main.js.map": "/react-exam/static/js/runtime-main.26ade05c.js.map",
+    "static/js/2.a8e6fb22.chunk.js": "/react-exam/static/js/2.a8e6fb22.chunk.js",
+    "static/js/2.a8e6fb22.chunk.js.map": "/react-exam/static/js/2.a8e6fb22.chunk.js.map",
+    "static/js/3.ea658eed.chunk.js": "/react-exam/static/js/3.ea658eed.chunk.js",
+    "static/js/3.ea658eed.chunk.js.map": "/react-exam/static/js/3.ea658eed.chunk.js.map",
     "index.html": "/react-exam/index.html",
-    "static/css/main.a617e044.chunk.css.map": "/react-exam/static/css/main.a617e044.chunk.css.map",
-    "static/js/2.e062e33b.chunk.js.LICENSE.txt": "/react-exam/static/js/2.e062e33b.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/react-exam/static/media/logo.6ce24c58.svg"
+    "static/css/main.116b8445.chunk.css.map": "/react-exam/static/css/main.116b8445.chunk.css.map",
+    "static/js/2.a8e6fb22.chunk.js.LICENSE.txt": "/react-exam/static/js/2.a8e6fb22.chunk.js.LICENSE.txt",
+    "static/media/HomeView.css": "/react-exam/static/media/chairs.81741049.jpg",
+    "static/media/AboutView.css": "/react-exam/static/media/popcorn.a8da62e9.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.fb614725.js",
-    "static/js/2.e062e33b.chunk.js",
-    "static/css/main.a617e044.chunk.css",
-    "static/js/main.b76e22ec.chunk.js"
+    "static/js/runtime-main.26ade05c.js",
+    "static/js/2.a8e6fb22.chunk.js",
+    "static/css/main.116b8445.chunk.css",
+    "static/js/main.0018a5a8.chunk.js"
   ]
 }
