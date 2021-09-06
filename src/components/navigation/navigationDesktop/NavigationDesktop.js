@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom"
 import RoutingPath from "../../../routes/RoutingPath"
 import "./NavigationDesktop.css"
 import logo from "../../../shared/img/chairLogo.png"
+import { Button } from "../../button/Button"
 
 export const NavigationDesktop = () => {
   const history = useHistory()
@@ -16,19 +17,18 @@ export const NavigationDesktop = () => {
         alt="logo"
       ></img>
 
-      <button
+      <div
         className="btn--home"
         onClick={() => history.push(RoutingPath.homeView)}
       >
-        {" "}
-        Home{" "}
-      </button>
-      <button
+        <Button label="Home" />
+      </div>
+      <div
         className="btn--about"
         onClick={() => history.push(RoutingPath.aboutView)}
       >
-        About
-      </button>
+        <Button label="About" />
+      </div>
     </nav>
   )
 }

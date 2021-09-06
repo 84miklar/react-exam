@@ -1,23 +1,22 @@
 .movieView__container {
-  background-image: url("../../shared/img/popcorn.jpg");
+  background-image: url("../../shared/img/popcorn_bg.jpg");
   background-size: cover;
-  padding: 1em;
   text-align: center;
+  padding: 1em;
 }
 
 .movie__container {
-  position: relative;
   border: solid 4px #cfb584;
   background-color: #103c61;
   border-radius: 10px;
   width: 55vw;
   margin: auto;
   margin-top: 3em;
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 }
 
 .movie__backdrop {
-  width: 765px;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
@@ -36,27 +35,48 @@
 }
 .movie__card {
   grid-column: 2;
-  grid-row: 3;
+  grid-row: 4;
   text-align: center;
   justify-self: end;
 }
 .overview {
   grid-column: 3;
-  grid-row: 3;
+  grid-row: 4;
   align-self: center;
   justify-self: center;
   width: 25vw;
+  font-size: 1.3rem;
 }
 .release__date {
   grid-column-start: 2;
-
-  grid-row: 4;
+  grid-row: 3;
   justify-self: center;
+  font-size: 1.5rem;
 }
 
 .voting {
   grid-column-start: 3;
-
-  grid-row: 4;
+  grid-row: 3;
   text-align: center;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 950px) {
+  .movie__data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    place-items: center;
+    margin-top: 0.2em;
+  }
+  .overview {
+    width: 90%;
+    font-size: 1.2rem;
+  }
+  .voting {
+    order: -1;
+  }
+  .release__date {
+    order: -1;
+  }
 }

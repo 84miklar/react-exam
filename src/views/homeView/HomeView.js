@@ -94,6 +94,9 @@ export const HomeView = () => {
           className="input"
           onChange={(event) => setSearch(event.target.value)}
           placeholder="Search movies"
+          onKeyDown={() => {
+            fetchDataFromExternalAPI()
+          }}
         ></input>
         <span
           onClick={() => {

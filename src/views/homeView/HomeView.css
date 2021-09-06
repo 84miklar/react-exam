@@ -18,10 +18,10 @@
   background-color: #cfb584;
   color: #103c61;
   border: solid 4px #103c61;
-  width: fit-content;
   height: fit-content;
   padding: 0.5em;
   border-radius: 15px;
+  margin: 1em;
 }
 .card__container {
   display: flex;

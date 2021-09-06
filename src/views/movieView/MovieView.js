@@ -45,18 +45,20 @@ export const MovieView = ({ location }) => {
             <Card movie={chosenMovie} />
           </span>
           <span className="release__date">
-            <h2>Release date: {data.data.results[chosenMovie].release_date}</h2>
-          </span>
-          <span className="overview">
-            <h3>{data.data.results[chosenMovie].overview}</h3>
+            <p>
+              Release date: <br /> {data.data.results[chosenMovie].release_date}
+            </p>
           </span>
           <span className="voting">
-            <h2>
+            <p>
               Avarage voting: {data.data.results[chosenMovie].vote_average}{" "}
               <span>&#40;</span>votes:{" "}
               {data.data.results[chosenMovie].vote_count}
               <span>&#41;</span>
-            </h2>
+            </p>
+          </span>
+          <span className="overview">
+            <p>{data.data.results[chosenMovie].overview}</p>
           </span>
         </div>
       </div>
@@ -65,7 +67,7 @@ export const MovieView = ({ location }) => {
   return (
     <div className="movieView__container">
       {displayData()}
-      <span onClick={() => history.goBack()}>
+      <span className="btn--search" onClick={() => history.goBack()}>
         <Button label="new search" />
       </span>
     </div>

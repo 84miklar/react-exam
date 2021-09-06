@@ -1,4 +1,6 @@
 .navDesk__container {
+  overflow: hidden;
+  position: relative;
   background-color: #852024;
   height: fit-content;
   display: grid;
@@ -10,17 +12,21 @@
 .navDesk__container button {
   width: 6em;
   margin-right: 0.5em;
-  font-size: 2rem;
   height: 2.5em;
-  color: #cfb584;
-  background-color: #852024;
   border: none;
-  border-radius: 15px;
 }
-.navDesk__container button:hover {
-  background-color: #103c61;
-  cursor: pointer;
+
+.bg__img {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
 }
+
 .btn--home {
   grid-column-start: 9;
 }

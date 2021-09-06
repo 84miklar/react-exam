@@ -7,3 +7,8 @@ body {
   background-color: black;
   color: whitesmoke;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
