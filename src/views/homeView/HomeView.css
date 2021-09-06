@@ -1,15 +1,27 @@
 .home__container {
+  text-align: center;
+  margin: 0;
   background-image: url("../../shared/img/chairs.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  height: 87vh;
-  text-align: center;
-  margin-top: 0;
+  height: 100vh;
 }
-
-.home__container h1 {
-  margin-top: 0;
-  padding: 2em;
+.search__container {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  align-content: center;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+.title {
+  background-color: #cfb584;
+  color: #103c61;
+  border: solid 4px #103c61;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5em;
+  border-radius: 15px;
 }
 .card__container {
   display: flex;
@@ -17,4 +29,10 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 3em;
+}
+.input {
+  height: 2rem;
+  width: 20rem;
+  font-size: 1.3rem;
+  margin: 2em;
 }

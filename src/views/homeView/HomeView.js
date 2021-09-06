@@ -1,13 +1,36 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import Axios from "axios"
 import Config from "../../shared/api/config"
 import "./HomeView.css"
 import { Card } from "../../components/cards/Card"
+import { CardOneMovie } from "../../components/cards/CardOneMovie"
 import { DataContext, DataProvider } from "../../shared/provider/DataProvider"
+import {
+  MovieDataContext,
+  MovieDataProvider,
+} from "../../shared/provider/MovieDataProvider"
+import { Button } from "../../components/button/Button"
 
 export const HomeView = () => {
   const [data, setData] = useContext(DataContext)
+  const [oneMovieData, setOneMovieData] = useContext(MovieDataContext)
   const [search, setSearch] = useState()
+  const [showAllMovies, setShowAllMovies] = useState(true)
+  const [showMovie, setShowMovie] = useState(true)
+
+  useEffect(() => {
+    fetchRandomMovie()
+    // setShowMovie(!showMovie)
+  }, [])
+
+  // useEffect(() => {
+  //   displayOneData()
+  //   console.log(showMovie)
+  // }, [showMovie])
+
+  // useEffect(() => {
+  //   displayData()
+  // }, [showAllMovies])
 
   const fetchDataFromExternalAPI = () => {
     if (search) {
@@ -16,57 +39,71 @@ export const HomeView = () => {
       )
         .then((response) => {
           setData(response)
+          setShowAllMovies(!showAllMovies)
         })
 
         .catch((error) => console.log(error))
     }
   }
 
+  const fetchRandomMovie = () => {
+    Axios.get(`${Config.popularMoviesURL}`)
+      .then((response) => {
+        setData(response)
+        setShowMovie(!showMovie)
+      })
+
+      .catch((error) => console.log(error))
+  }
+
+  // const displayOneData = () => {
+  //   if (oneMovieData) {
+  //     return (
+  //       <div className="card__container">
+  //         <CardOneMovie />
+  //       </div>
+  //     )
+  //   }
+  // }
   const displayData = () => {
     if (data) {
       return (
         <div className="card__container">
-          <Card movie={0} />
+          {data.data.results.map((el, index) => {
+            return <Card movie={index} />
+          })}
+          {/* <Card movie={0} />
           <Card movie={1} />
           <Card movie={2} />
           <Card movie={3} />
-          <Card movie={4} />
+          <Card movie={4} /> */}
         </div>
       )
     }
   }
 
-  // const fetchPopularMovies = () => {
-  //   Axios.get(`${Config.popularMoviesURL}`)
-  //     .then((response) => {
-  //       setData(response)
-
-  //       console.log(data)
-  //     })
-
-  //     .catch((error) => console.log(error))
-  // }
-  // const displayPopular = () => {
-  //   if (data) {
-  //     return (
-  //       <div>
-  //         <img
-  //           src={`https://image.tmdb.org/t/p/w300/${data.map.data.results[0].poster_path}`}
-  //           alt="sfds"
-  //         ></img>
-  //       </div>
-  //     )
-  //   }
-  // }
-
+  console.log(data)
   return (
     <div className="home__container">
-      <h1>Home!</h1>
-      <span>Search movies</span>
-      <input onChange={(event) => setSearch(event.target.value)}></input>
-      <button onClick={() => fetchDataFromExternalAPI()}>Make API call</button>
-      <button onClick={() => console.log(data)}>Show Data</button>
-      {/* {fetchPopularMovies()} */}
+      <div className="search__container">
+        <div className="title">
+          <h1>Welcome to a global world of movie entertainement</h1>
+        </div>
+
+        <input
+          className="input"
+          onChange={(event) => setSearch(event.target.value)}
+          placeholder="Search movies"
+        ></input>
+        <span
+          onClick={() => {
+            fetchDataFromExternalAPI()
+          }}
+        >
+          <Button label="search" />
+        </span>
+      </div>
+      {/* {displayOneData()} */}
       {displayData()}
     </div>
   )

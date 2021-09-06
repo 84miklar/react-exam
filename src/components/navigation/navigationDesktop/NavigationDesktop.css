@@ -5,6 +5,7 @@
   grid-template-columns: repeat(10, 1fr);
   justify-content: flex-end;
   place-items: center;
+  margin-bottom: 0;
 }
 .navDesk__container button {
   width: 6em;
