@@ -1,9 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;600&display=swap");
+
+:root {
+  --clr-primary: #852024;
+  --clr-primary-dark: #4d0e10;
+  --clr-secondary: #103c61;
+  --clr-secondary-dark: #0c2438;
+  --clr-accent: #cfb584;
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Urbanist", sans-serif;
   background-color: black;
   color: whitesmoke;
 }

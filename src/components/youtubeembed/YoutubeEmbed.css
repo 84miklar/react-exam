@@ -1,0 +1,9 @@
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 3em;
+  position: relative;
+}
+.video-responsive iframe {
+  width: 640px;
+  height: 360px;
+}

@@ -5,22 +5,40 @@ import "./MovieView.css"
 import logo from "../../shared/img/chairLogo.png"
 import { Button } from "../../components/button/Button"
 import { useHistory } from "react-router"
-import RoutingPath from "../../routes/RoutingPath"
+import Config from "../../shared/api/config"
+import Axios from "axios"
+import { useState, useEffect } from "react/cjs/react.development"
+import { YoutubeEmbed } from "../../components/youtubeembed/YoutubeEmbed"
 
 export const MovieView = ({ location }) => {
+  useEffect(() => {
+    GetPlayableMovieFromData()
+  }, [])
   const [data, setData] = useContext(DataContext)
+  const [movieClip, setMovieClip] = useState()
   const history = useHistory()
-
   const chosenMovie = location.state
-  console.log(data)
-  console.log(chosenMovie)
+
+  const GetPlayableMovieFromData = () => {
+    if (data) {
+      Axios.get(
+        `${Config.baseAPI_URL}/movie/${data.data.results[chosenMovie].id}/videos?${Config.API_Key}&language=en-US`
+      )
+        .then((response) => {
+          setMovieClip(response)
+          console.log(response)
+        })
+
+        .catch((error) => console.log(error))
+    }
+  }
 
   const showBackdrop = () => {
     if (data.data.results[chosenMovie].backdrop_path) {
       return (
         <img
           className="movie__backdrop"
-          src={`https://image.tmdb.org/t/p/w500/${data.data.results[chosenMovie].backdrop_path}`}
+          src={`${Config.movieImageURL}w500/${data.data.results[chosenMovie].backdrop_path}`}
           alt="backdrop"
         ></img>
       )
@@ -57,6 +75,7 @@ export const MovieView = ({ location }) => {
               <span>&#41;</span>
             </p>
           </span>
+
           <span className="overview">
             <p>{data.data.results[chosenMovie].overview}</p>
           </span>
@@ -66,7 +85,10 @@ export const MovieView = ({ location }) => {
   }
   return (
     <div className="movieView__container">
+      {console.log("hej")}
       {displayData()}
+
+      <YoutubeEmbed embedId={movieClip.data.results[0].key} />
       <span className="btn--search" onClick={() => history.goBack()}>
         <Button label="new search" />
       </span>

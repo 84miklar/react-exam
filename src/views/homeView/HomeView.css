@@ -2,11 +2,14 @@
   text-align: center;
   margin: 0;
   background-image: url("../../shared/img/chairs.jpg");
-  background-repeat: no-repeat;
+  box-shadow: 0 0 15px 15px black inset;
   background-position: center;
   height: 100vh;
 }
 .search__container {
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -15,13 +18,21 @@
   margin-bottom: 3em;
 }
 .title {
-  background-color: #cfb584;
-  color: #103c61;
-  border: solid 4px #103c61;
-  height: fit-content;
+  display: flex;
+  justify-content: center;
+  color: var(--clr-accent);
+  width: 20em;
+  height: 25em;
   padding: 0.5em;
-  border-radius: 15px;
   margin: 1em;
+}
+.title--img {
+  max-width: 40em;
+  margin-left: -15em;
+}
+.title h1 {
+  margin-left: -3em;
+  text-align: left;
 }
 .card__container {
   display: flex;
@@ -35,4 +46,11 @@
   width: 20rem;
   font-size: 1.3rem;
   margin: 2em;
+  border-radius: 5px;
+  border: none;
+  padding: 0.8em;
+}
+.result__header {
+  font-size: 1.8rem;
+  font-weight: 700;
 }

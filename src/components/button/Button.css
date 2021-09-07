@@ -1,12 +1,12 @@
 .btn {
   font-size: 2em;
-  background-color: #852024;
-  color: #cfb584;
+  background-color: var(--clr-primary);
+  color: var(--clr-accent);
   padding: 0.5em;
-  border: solid 1px #cfb584;
+  border: solid 1px var(--clr-accent);
   border-radius: 15px;
 }
 .btn:hover {
-  background-color: #103c61;
+  background-color: var(--clr-secondary);
   cursor: pointer;
 }

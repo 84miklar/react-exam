@@ -6,8 +6,12 @@
 }
 
 .movie__container {
-  border: solid 4px #cfb584;
-  background-color: #103c61;
+  border: solid 4px var(--clr-accent);
+  background: linear-gradient(
+    to right bottom,
+    var(--clr-secondary),
+    var(--clr-secondary-dark)
+  );
   border-radius: 10px;
   width: 55vw;
   margin: auto;
@@ -46,6 +50,7 @@
   justify-self: center;
   width: 25vw;
   font-size: 1.3rem;
+  text-align: left;
 }
 .release__date {
   grid-column-start: 2;
@@ -72,6 +77,7 @@
   .overview {
     width: 90%;
     font-size: 1.2rem;
+    text-align: center;
   }
   .voting {
     order: -1;

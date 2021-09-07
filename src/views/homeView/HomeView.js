@@ -3,34 +3,18 @@ import Axios from "axios"
 import Config from "../../shared/api/config"
 import "./HomeView.css"
 import { Card } from "../../components/cards/Card"
-import { CardOneMovie } from "../../components/cards/CardOneMovie"
 import { DataContext, DataProvider } from "../../shared/provider/DataProvider"
-import {
-  MovieDataContext,
-  MovieDataProvider,
-} from "../../shared/provider/MovieDataProvider"
 import { Button } from "../../components/button/Button"
+import WomanEating from "../../shared/img/woman_eating.jpg"
 
 export const HomeView = () => {
   const [data, setData] = useContext(DataContext)
-  const [oneMovieData, setOneMovieData] = useContext(MovieDataContext)
   const [search, setSearch] = useState()
-  const [showAllMovies, setShowAllMovies] = useState(true)
-  const [showMovie, setShowMovie] = useState(true)
+  const [resultHeader, setResultHeader] = useState("Discover something new")
 
   useEffect(() => {
-    fetchRandomMovie()
-    // setShowMovie(!showMovie)
+    fetchDiscoverMovie()
   }, [])
-
-  // useEffect(() => {
-  //   displayOneData()
-  //   console.log(showMovie)
-  // }, [showMovie])
-
-  // useEffect(() => {
-  //   displayData()
-  // }, [showAllMovies])
 
   const fetchDataFromExternalAPI = () => {
     if (search) {
@@ -39,32 +23,21 @@ export const HomeView = () => {
       )
         .then((response) => {
           setData(response)
-          setShowAllMovies(!showAllMovies)
         })
 
         .catch((error) => console.log(error))
     }
   }
 
-  const fetchRandomMovie = () => {
-    Axios.get(`${Config.popularMoviesURL}`)
+  const fetchDiscoverMovie = () => {
+    Axios.get(`${Config.discoverMoviesURL}`)
       .then((response) => {
         setData(response)
-        setShowMovie(!showMovie)
       })
 
       .catch((error) => console.log(error))
   }
 
-  // const displayOneData = () => {
-  //   if (oneMovieData) {
-  //     return (
-  //       <div className="card__container">
-  //         <CardOneMovie />
-  //       </div>
-  //     )
-  //   }
-  // }
   const displayData = () => {
     if (data) {
       return (
@@ -72,11 +45,6 @@ export const HomeView = () => {
           {data.data.results.map((el, index) => {
             return <Card movie={index} />
           })}
-          {/* <Card movie={0} />
-          <Card movie={1} />
-          <Card movie={2} />
-          <Card movie={3} />
-          <Card movie={4} /> */}
         </div>
       )
     }
@@ -87,12 +55,20 @@ export const HomeView = () => {
     <div className="home__container">
       <div className="search__container">
         <div className="title">
+          <img
+            className="title--img"
+            src={WomanEating}
+            alt="woman eating popcorn"
+          ></img>
           <h1>Welcome to a global world of movie entertainement</h1>
         </div>
 
         <input
           className="input"
-          onChange={(event) => setSearch(event.target.value)}
+          onChange={(event) => {
+            setSearch(event.target.value)
+            setResultHeader(event.target.value)
+          }}
           placeholder="Search movies"
           onKeyDown={() => {
             fetchDataFromExternalAPI()
@@ -106,7 +82,7 @@ export const HomeView = () => {
           <Button label="search" />
         </span>
       </div>
-      {/* {displayOneData()} */}
+      <p className="result__header">{resultHeader}</p>
       {displayData()}
     </div>
   )

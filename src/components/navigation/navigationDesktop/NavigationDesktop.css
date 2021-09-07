@@ -1,7 +1,12 @@
 .navDesk__container {
   overflow: hidden;
   position: relative;
-  background-color: #852024;
+  background: linear-gradient(
+    to left,
+    var(--clr-primary),
+    var(--clr-primary-dark)
+  );
+
   height: fit-content;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -13,7 +18,6 @@
   width: 6em;
   margin-right: 0.5em;
   height: 2.5em;
-  border: none;
 }
 
 .bg__img {
