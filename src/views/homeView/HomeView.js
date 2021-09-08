@@ -2,19 +2,32 @@ import React, { useState, useContext, useEffect } from "react"
 import Axios from "axios"
 import Config from "../../shared/api/config"
 import "./HomeView.css"
-import { Card } from "../../components/cards/Card"
+import { MovieCard } from "../../components/cards/MovieCard"
 import { DataContext, DataProvider } from "../../shared/provider/DataProvider"
 import { Button } from "../../components/button/Button"
 import WomanEating from "../../shared/img/woman_eating.jpg"
+import { Spinner } from "../../components/spinner/Spinner"
+import RoutingPath from "../../routes/RoutingPath"
+import { useHistory } from "react-router"
 
 export const HomeView = () => {
   const [data, setData] = useContext(DataContext)
   const [search, setSearch] = useState()
-  const [resultHeader, setResultHeader] = useState("Discover something new")
+
+  const history = useHistory()
 
   useEffect(() => {
     fetchDiscoverMovie()
   }, [])
+
+  const fetchDiscoverMovie = () => {
+    Axios.get(`${Config.discoverMoviesURL}`)
+      .then((response) => {
+        setData(response)
+      })
+
+      .catch((error) => console.log(error))
+  }
 
   const fetchDataFromExternalAPI = () => {
     if (search) {
@@ -29,25 +42,28 @@ export const HomeView = () => {
     }
   }
 
-  const fetchDiscoverMovie = () => {
-    Axios.get(`${Config.discoverMoviesURL}`)
-      .then((response) => {
-        setData(response)
-      })
-
-      .catch((error) => console.log(error))
-  }
-
   const displayData = () => {
     if (data) {
       return (
         <div className="card__container">
           {data.data.results.map((el, index) => {
-            return <Card movie={index} />
+            return (
+              <span
+                className="movie__poster"
+                onClick={() => history.push(RoutingPath.movieView, index)}
+              >
+                <MovieCard movie={index} />
+              </span>
+            )
           })}
         </div>
       )
     }
+  }
+
+  const loadingCards = () => {
+    if (!data) return <Spinner />
+    return displayData()
   }
 
   console.log(data)
@@ -67,7 +83,6 @@ export const HomeView = () => {
           className="input"
           onChange={(event) => {
             setSearch(event.target.value)
-            setResultHeader(event.target.value)
           }}
           placeholder="Search movies"
           onKeyDown={() => {
@@ -82,8 +97,8 @@ export const HomeView = () => {
           <Button label="search" />
         </span>
       </div>
-      <p className="result__header">{resultHeader}</p>
-      {displayData()}
+
+      {loadingCards()}
     </div>
   )
 }

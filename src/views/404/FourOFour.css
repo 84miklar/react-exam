@@ -1,0 +1,9 @@
+.four_O_four {
+  background-image: url(../../shared/img/ofGravity.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  height: 100vh;
+  padding: 5em;
+  margin-top: -3em;
+}

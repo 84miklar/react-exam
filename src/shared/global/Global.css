@@ -4,7 +4,8 @@
   --clr-primary: #852024;
   --clr-primary-dark: #4d0e10;
   --clr-secondary: #103c61;
-  --clr-secondary-dark: #0c2438;
+  --clr-secondary-opacity: #103c61b0;
+  --clr-secondary-dark-opacity: #0c243894;
   --clr-accent: #cfb584;
 }
 

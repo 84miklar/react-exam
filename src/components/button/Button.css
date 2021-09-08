@@ -1,10 +1,11 @@
 .btn {
-  font-size: 2em;
+  font-size: 2rem;
   background-color: var(--clr-primary);
   color: var(--clr-accent);
   padding: 0.5em;
   border: solid 1px var(--clr-accent);
   border-radius: 15px;
+  width: fit-content;
 }
 .btn:hover {
   background-color: var(--clr-secondary);

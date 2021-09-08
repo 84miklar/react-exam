@@ -1,15 +1,10 @@
-.poster {
-  border-radius: 8px;
-  box-shadow: 5px 5px 5px #212121;
-
+.movie__container {
+  border: solid 4px var(--clr-accent);
+  background-color: var(--clr-secondary-opacity);
+  border-radius: 10px;
+  width: auto;
   margin: auto;
-}
-.card {
-  width: min-content;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-.card:hover {
-  cursor: pointer;
+  margin-top: 3em;
+  margin-bottom: 2em;
+  box-shadow: 5px 5px 5px #212121;
 }

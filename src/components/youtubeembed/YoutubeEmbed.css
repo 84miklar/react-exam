@@ -4,6 +4,6 @@
   position: relative;
 }
 .video-responsive iframe {
-  width: 640px;
-  height: 360px;
+  height: 50vh;
+  width: 45vw;
 }

@@ -1,17 +1,14 @@
 .movieView__container {
-  background-image: url("../../shared/img/popcorn_bg.jpg");
+  background-image: url("../../shared/img/popcorn.jpg");
   background-size: cover;
+  background-position: right bottom;
   text-align: center;
   padding: 1em;
 }
 
 .movie__container {
   border: solid 4px var(--clr-accent);
-  background: linear-gradient(
-    to right bottom,
-    var(--clr-secondary),
-    var(--clr-secondary-dark)
-  );
+  background-color: var(--clr-secondary-opacity);
   border-radius: 10px;
   width: 55vw;
   margin: auto;

@@ -1,0 +1,12 @@
+.poster {
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px #212121;
+
+  margin: auto;
+}
+.card {
+  width: min-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}

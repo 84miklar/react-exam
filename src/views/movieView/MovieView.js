@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Card } from "../../components/cards/Card"
+import { MovieCard } from "../../components/cards/MovieCard"
 import { DataContext, DataProvider } from "../../shared/provider/DataProvider"
 import "./MovieView.css"
 import logo from "../../shared/img/chairLogo.png"
@@ -9,6 +9,9 @@ import Config from "../../shared/api/config"
 import Axios from "axios"
 import { useState, useEffect } from "react/cjs/react.development"
 import { YoutubeEmbed } from "../../components/youtubeembed/YoutubeEmbed"
+import { Spinner } from "../../components/spinner/Spinner"
+import RoutingPath from "../../routes/RoutingPath"
+import { Card } from "../../components/cards/Card"
 
 export const MovieView = ({ location }) => {
   useEffect(() => {
@@ -18,6 +21,12 @@ export const MovieView = ({ location }) => {
   const [movieClip, setMovieClip] = useState()
   const history = useHistory()
   const chosenMovie = location.state
+
+  const showMovieIfLoaded = () => {
+    if (!movieClip) return <Spinner />
+    if (!movieClip.data.results[0]) return <> </>
+    return <YoutubeEmbed embedId={movieClip.data.results[0].key} />
+  }
 
   const GetPlayableMovieFromData = () => {
     if (data) {
@@ -52,43 +61,47 @@ export const MovieView = ({ location }) => {
   }
 
   const displayData = () => {
-    return (
-      <div className="movie__container">
-        <h1 className="movie__title">
-          {data.data.results[chosenMovie].original_title}
-        </h1>
-        <span className="backdrop">{showBackdrop()}</span>
-        <div className="movie__data">
-          <span className="movie__card">
-            <Card movie={chosenMovie} />
-          </span>
-          <span className="release__date">
-            <p>
-              Release date: <br /> {data.data.results[chosenMovie].release_date}
-            </p>
-          </span>
-          <span className="voting">
-            <p>
-              Avarage voting: {data.data.results[chosenMovie].vote_average}{" "}
-              <span>&#40;</span>votes:{" "}
-              {data.data.results[chosenMovie].vote_count}
-              <span>&#41;</span>
-            </p>
-          </span>
+    if (data) {
+      return (
+        <div>
+          <h1 className="movie__title">
+            {data.data.results[chosenMovie].original_title}
+          </h1>
+          <span className="backdrop">{showBackdrop()}</span>
+          <div className="movie__data">
+            <span className="movie__card">
+              <MovieCard movie={chosenMovie} />
+            </span>
+            <span className="release__date">
+              <p>
+                Release date: <br />{" "}
+                {data.data.results[chosenMovie].release_date}
+              </p>
+            </span>
+            <span className="voting">
+              <p>
+                Avarage voting: {data.data.results[chosenMovie].vote_average}{" "}
+                <span>&#40;</span>votes:{" "}
+                {data.data.results[chosenMovie].vote_count}
+                <span>&#41;</span>
+              </p>
+            </span>
 
-          <span className="overview">
-            <p>{data.data.results[chosenMovie].overview}</p>
-          </span>
+            <span className="overview">
+              <p>{data.data.results[chosenMovie].overview}</p>
+            </span>
+          </div>
+          <span className="emebeded__movie">{showMovieIfLoaded()}</span>
         </div>
-      </div>
-    )
+      )
+    } else {
+      history.push(RoutingPath.homeView)
+    }
   }
+
   return (
     <div className="movieView__container">
-      {console.log("hej")}
-      {displayData()}
-
-      <YoutubeEmbed embedId={movieClip.data.results[0].key} />
+      <Card>{displayData()}</Card>
       <span className="btn--search" onClick={() => history.goBack()}>
         <Button label="new search" />
       </span>
