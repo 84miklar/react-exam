@@ -13,7 +13,6 @@ import { useHistory } from "react-router"
 export const HomeView = () => {
   const [data, setData] = useContext(DataContext)
   const [search, setSearch] = useState()
-
   const history = useHistory()
 
   useEffect(() => {
@@ -66,17 +65,11 @@ export const HomeView = () => {
     return displayData()
   }
 
-  console.log(data)
   return (
     <div className="home__container">
       <div className="search__container">
         <div className="title">
-          <img
-            className="title--img"
-            src={WomanEating}
-            alt="woman eating popcorn"
-          ></img>
-          <h1>Welcome to a global world of movie entertainement</h1>
+          <h1>Welcome to a world of global movie entertainement</h1>
         </div>
 
         <input
@@ -97,8 +90,7 @@ export const HomeView = () => {
           <Button label="search" />
         </span>
       </div>
-
-      {loadingCards()}
+      <div className="result__container">{loadingCards()}</div>
     </div>
   )
 }

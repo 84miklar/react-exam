@@ -16,19 +16,26 @@ export const NavigationDesktop = () => {
         src={logo}
         alt="logo"
       ></img>
-
-      <div
-        className="btn--home"
-        onClick={() => history.push(RoutingPath.homeView)}
-      >
-        <Button label="Home" />
-      </div>
-      <div
-        className="btn--about"
-        onClick={() => history.push(RoutingPath.aboutView)}
-      >
-        <Button label="About" />
-      </div>
+      <ul className="nav__btns">
+        <li
+          className="nav__btn--home"
+          onClick={() => history.push(RoutingPath.homeView)}
+        >
+          <Button label="Home" />
+        </li>
+        <li
+          className="nav__btn--about"
+          onClick={() => history.push(RoutingPath.aboutView)}
+        >
+          <Button label="About" />
+        </li>
+        <li
+          className="nav__btn--signin"
+          onClick={() => history.push(RoutingPath.aboutView)}
+        >
+          <Button label="Sign In" />
+        </li>
+      </ul>
     </nav>
   )
 }

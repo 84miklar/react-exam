@@ -10,7 +10,6 @@
   height: fit-content;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  justify-content: flex-end;
   place-items: center;
   margin-bottom: 0;
 }
@@ -30,11 +29,19 @@
   height: auto;
   z-index: -1;
 }
-
-.btn--home {
-  grid-column-start: 9;
+.nav__btns {
+  grid-column: 10;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
 }
-.btn--about {
+.nav__btn--home {
+  grid-column: 7;
+}
+.nav__btn--about {
+  grid-column-start: 10;
+}
+.nav__btn--signin {
   grid-column-start: 10;
 }
 .logo {
