@@ -5,6 +5,8 @@ const discoverMoviesURL =
 
 const movieImageURL = "https://image.tmdb.org/t/p/"
 const movieTrailerURL = "https://www.youtube.com/embed/"
+const movieById =
+  "https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=baf9831bd66d107c8e6e596671afb208&language=en-US"
 
 export default {
   baseAPI_URL,

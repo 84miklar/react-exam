@@ -1,12 +1,40 @@
-import React from "react"
-import { useHistory } from "react-router-dom"
-import RoutingPath from "../../../routes/RoutingPath"
+import React, { useContext, useState } from "react"
 import "./NavigationDesktop.css"
+import { useHistory } from "react-router-dom"
+import { UserContext } from "../../../shared/provider/UserProvider"
+import RoutingPath from "../../../routes/RoutingPath"
 import logo from "../../../shared/img/chairLogo.png"
 import { Button } from "../../button/Button"
+import { Profile } from "../../profile/Profile"
+import { NavigationDropdown } from "../NavigationDropdown/NavigationDropdown"
 
 export const NavigationDesktop = () => {
+  const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+  const [navDropdown, setnavDropdown] = useState(false)
   const history = useHistory()
+
+  const showAuthenitcatedUser = () => {
+    if (authenticatedUser) {
+      return <Profile />
+    } else {
+      return (
+        <li
+          className="nav__btn--signin"
+          onClick={() => history.push(RoutingPath.signinView)}
+        >
+          <Button label="Sign In" />
+        </li>
+      )
+    }
+  }
+
+  const toggleNavbar = function () {
+    const hamburger = document.querySelector(".hamburger")
+    if (navDropdown) {
+      hamburger.classList.add("hamburger--crossed")
+      return <NavigationDropdown />
+    } else hamburger.classList.remove("hamburger--crossed")
+  }
 
   return (
     <nav className="navDesk__container">
@@ -29,13 +57,14 @@ export const NavigationDesktop = () => {
         >
           <Button label="About" />
         </li>
-        <li
-          className="nav__btn--signin"
-          onClick={() => history.push(RoutingPath.aboutView)}
-        >
-          <Button label="Sign In" />
-        </li>
+        {showAuthenitcatedUser()}
       </ul>
+      <div class="hamburger" onClick={() => setnavDropdown(!navDropdown)}>
+        {toggleNavbar()}
+        <div class="hamburger__line hamburger__line1"></div>
+        <div class="hamburger__line hamburger__line2"></div>
+        <div class="hamburger__line hamburger__line3"></div>
+      </div>
     </nav>
   )
 }

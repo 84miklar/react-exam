@@ -1,17 +1,50 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import RoutingPath from "./RoutingPath"
+import LocalStorage from "../shared/storage/LocalStorage"
 import { AboutView } from "../views/aboutView/AboutView"
 import { HomeView } from "../views/homeView/HomeView"
 import { FourOFour } from "../views/404/FourOFour"
 import { MovieView } from "../views/movieView/MovieView"
+import { SignInView } from "../views/signin/SignInView"
+import { FavouritesView } from "../views/favouritesView/FavouritesView"
+import { UserContext } from "../shared/provider/UserProvider"
 
 export const Routes = ({ children }) => {
+  const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+
+  const checkUserAuthentification = () => {
+    const userFromMemory = localStorage.getItem(LocalStorage.username)
+    setAuthenticatedUser(userFromMemory)
+  }
+  useEffect(() => {
+    checkUserAuthentification()
+  }, [])
+
+  const blockIfAuthentificatedUser = (view) => {
+    if (authenticatedUser) return HomeView
+    else return view
+  }
+  const blockIfNotAuthentificatedUser = (view) => {
+    if (!authenticatedUser) return HomeView
+    else return view
+  }
+
   return (
     <BrowserRouter basename="/react-exam">
       {children}
       <Switch>
         <Route exact path={RoutingPath.aboutView} component={AboutView} />
+        <Route
+          exact
+          path={RoutingPath.signinView}
+          component={blockIfAuthentificatedUser(SignInView)}
+        />
+        <Route
+          exact
+          path={RoutingPath.favouritesView}
+          component={blockIfNotAuthentificatedUser(FavouritesView)}
+        />
         <Route exact path={RoutingPath.movieView} component={MovieView} />
         <Route exact path={RoutingPath.homeView} component={HomeView} />
         <Route path="*">

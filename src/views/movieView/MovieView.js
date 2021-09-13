@@ -12,6 +12,7 @@ import { YoutubeEmbed } from "../../components/youtubeembed/YoutubeEmbed"
 import { Spinner } from "../../components/spinner/Spinner"
 import RoutingPath from "../../routes/RoutingPath"
 import { Card } from "../../components/cards/Card"
+import LocalStorage from "../../shared/storage/LocalStorage"
 
 export const MovieView = ({ location }) => {
   useEffect(() => {
@@ -60,6 +61,16 @@ export const MovieView = ({ location }) => {
     }
   }
 
+  const favourize = () => {
+    const favouriteID = data.data.results[chosenMovie].id
+    LocalStorage.favourites.push(favouriteID)
+    localStorage.setItem("favourites", LocalStorage.favourites)
+    localStorage[LocalStorage.favourites] = JSON.stringify(
+      LocalStorage.favourites
+    )
+    console.log(LocalStorage.favourites)
+  }
+
   const displayData = () => {
     if (data) {
       return (
@@ -102,6 +113,9 @@ export const MovieView = ({ location }) => {
   return (
     <div className="movieView__container">
       <Card>{displayData()}</Card>
+      <span className="btn--favourite" onClick={() => favourize()}>
+        <Button label="favourize" />
+      </span>
       <span className="btn--search" onClick={() => history.goBack()}>
         <Button label="new search" />
       </span>

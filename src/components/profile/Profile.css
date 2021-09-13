@@ -1,0 +1,16 @@
+.profile {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 8em;
+  gap: 1em;
+}
+.profile__username {
+  color: var(--clr-accent);
+}
+.profile__img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}

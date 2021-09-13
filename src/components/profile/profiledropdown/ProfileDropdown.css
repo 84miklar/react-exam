@@ -1,0 +1,26 @@
+.dropdown__container {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: 1em;
+  background-color: var(--clr-primary-dark);
+  z-index: 999;
+  color: var(--clr-accent);
+  text-align: center;
+  font-size: 1.2rem;
+  display: none;
+}
+.profile:focus-within .dropdown__container,
+.profile:hover .dropdown__container {
+  display: block;
+}
+.dropdown__container button {
+  font-size: 1.2rem;
+  background-color: var(--clr-primary-dark);
+  color: var(--clr-accent);
+  border: none;
+}
+.dropdown__container button:focus,
+.dropdown__container button:hover {
+  cursor: pointer;
+}
