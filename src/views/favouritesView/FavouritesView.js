@@ -18,29 +18,31 @@ export const FavouritesView = () => {
 
   useEffect(() => {
     fetchDataByMovieId()
+    console.log("effect")
   }, [])
 
   const fetchDataByMovieId = () => {
     if (LocalStorage.favourites.length > 0) {
       const storedFavourites = JSON.parse(localStorage[LocalStorage.favourites])
-
-      storedFavourites.map((el) => {
-        Axios.get(`${Config.baseAPI_URL}movie/${el}?${Config.API_Key}`)
-          .then((response) => {
-            favs.push(response)
-            setFavourite(favs)
-          })
-
-          .catch((error) => console.log(error))
+      console.log(storedFavourites)
+      storedFavourites.map(async (el) => {
+        try {
+          const response = await Axios.get(
+            `${Config.baseAPI_URL}movie/${el}?${Config.API_Key}`
+          )
+          favs.push(response)
+          setFavourite(favs)
+        } catch (error) {
+          return console.log(error)
+        }
       })
-    } else history.push(RoutingPath.homeView)
+    }
   }
 
   const display = () => {
     if (favourite) {
+      console.log("display")
       return favourite.map((item) => {
-        //console.log(item.data.original_title)
-
         return (
           <div>
             <h3 key={item.data.original_title}>
@@ -77,7 +79,6 @@ export const FavouritesView = () => {
   return (
     <div className="favourite__container">
       <Card>
-        {" "}
         <h1>Your favourite movies</h1>
         <div className="favourites">{display()}</div>
       </Card>

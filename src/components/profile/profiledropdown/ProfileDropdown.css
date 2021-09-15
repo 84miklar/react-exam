@@ -2,13 +2,13 @@
   position: absolute;
   top: 100%;
   right: 0;
-  padding: 1em;
   background-color: var(--clr-primary-dark);
   z-index: 999;
   color: var(--clr-accent);
   text-align: center;
   font-size: 1.2rem;
   display: none;
+  width: 10rem;
 }
 .profile:focus-within .dropdown__container,
 .profile:hover .dropdown__container {
@@ -19,6 +19,8 @@
   background-color: var(--clr-primary-dark);
   color: var(--clr-accent);
   border: none;
+  width: 100%;
+  margin-bottom: 0.5em;
 }
 .dropdown__container button:focus,
 .dropdown__container button:hover {

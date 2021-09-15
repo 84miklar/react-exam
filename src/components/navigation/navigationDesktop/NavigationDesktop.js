@@ -28,12 +28,19 @@ export const NavigationDesktop = () => {
     }
   }
 
+  const toggleDropdown = () => {
+    if (navDropdown) return <NavigationDropdown />
+  }
   const toggleNavbar = function () {
     const hamburger = document.querySelector(".hamburger")
-    if (navDropdown) {
+    if (hamburger.classList.contains("hamburger--crossed")) {
+      setnavDropdown(false)
+      hamburger.classList.remove("hamburger--crossed")
+    } else {
+      console.log("HEJ")
+      setnavDropdown(true)
       hamburger.classList.add("hamburger--crossed")
-      return <NavigationDropdown />
-    } else hamburger.classList.remove("hamburger--crossed")
+    }
   }
 
   return (
@@ -59,8 +66,15 @@ export const NavigationDesktop = () => {
         </li>
         {showAuthenitcatedUser()}
       </ul>
-      <div class="hamburger" onClick={() => setnavDropdown(!navDropdown)}>
-        {toggleNavbar()}
+      {toggleDropdown()}
+      <div
+        class="hamburger"
+        onClick={() => {
+          {
+            toggleNavbar()
+          }
+        }}
+      >
         <div class="hamburger__line hamburger__line1"></div>
         <div class="hamburger__line hamburger__line2"></div>
         <div class="hamburger__line hamburger__line3"></div>

@@ -2,8 +2,10 @@
   background-image: url("../../shared/img/popcorn.jpg");
   background-size: cover;
   background-position: right bottom;
+  box-shadow: 0 0 30px 30px black inset;
   text-align: center;
   padding: 1em;
+  height: 100vh;
 }
 
 .favourites {

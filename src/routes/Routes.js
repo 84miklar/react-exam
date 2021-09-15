@@ -22,12 +22,10 @@ export const Routes = ({ children }) => {
   }, [])
 
   const blockIfAuthentificatedUser = (view) => {
-    if (authenticatedUser) return HomeView
-    else return view
+    return authenticatedUser ? HomeView : view
   }
   const blockIfNotAuthentificatedUser = (view) => {
-    if (!authenticatedUser) return HomeView
-    else return view
+    return !authenticatedUser ? HomeView : view
   }
 
   return (

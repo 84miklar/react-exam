@@ -1,11 +1,15 @@
 import "./NavigationDropdown.css"
+import { useHistory } from "react-router"
+import RoutingPath from "../../../routes/RoutingPath"
+import { ShowAuthenitcatedUser } from "../../../functions/ShowAuthenticatedUser"
 export const NavigationDropdown = () => {
+  const history = useHistory()
   return (
     <div className="navigationDropdown__container">
-      <h4>Home</h4>
-      <h4>About</h4>
+      <button onClick={() => history.push(RoutingPath.homeView)}>Home</button>
+      <button onClick={() => history.push(RoutingPath.aboutView)}>About</button>
       <hr />
-      <h4>Sign in</h4>
+      {ShowAuthenitcatedUser()}
     </div>
   )
 }

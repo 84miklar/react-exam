@@ -16,8 +16,9 @@ import LocalStorage from "../../shared/storage/LocalStorage"
 
 export const MovieView = ({ location }) => {
   useEffect(() => {
-    GetPlayableMovieFromData()
+    getPlayableMovieFromData()
   }, [])
+
   const [data, setData] = useContext(DataContext)
   const [movieClip, setMovieClip] = useState()
   const history = useHistory()
@@ -29,14 +30,13 @@ export const MovieView = ({ location }) => {
     return <YoutubeEmbed embedId={movieClip.data.results[0].key} />
   }
 
-  const GetPlayableMovieFromData = () => {
+  const getPlayableMovieFromData = () => {
     if (data) {
       Axios.get(
         `${Config.baseAPI_URL}/movie/${data.data.results[chosenMovie].id}/videos?${Config.API_Key}&language=en-US`
       )
         .then((response) => {
           setMovieClip(response)
-          console.log(response)
         })
 
         .catch((error) => console.log(error))
@@ -49,7 +49,7 @@ export const MovieView = ({ location }) => {
         <img
           className="movie__backdrop"
           src={`${Config.movieImageURL}w500/${data.data.results[chosenMovie].backdrop_path}`}
-          alt="backdrop"
+          alt="movie backdrop"
         ></img>
       )
     } else {
@@ -64,11 +64,10 @@ export const MovieView = ({ location }) => {
   const favourize = () => {
     const favouriteID = data.data.results[chosenMovie].id
     LocalStorage.favourites.push(favouriteID)
-    localStorage.setItem("favourites", LocalStorage.favourites)
+    localStorage.setItem("favourites", LocalStorage.favourites + favouriteID)
     localStorage[LocalStorage.favourites] = JSON.stringify(
       LocalStorage.favourites
     )
-    console.log(LocalStorage.favourites)
   }
 
   const displayData = () => {
@@ -113,6 +112,7 @@ export const MovieView = ({ location }) => {
   return (
     <div className="movieView__container">
       <Card>{displayData()}</Card>
+
       <span className="btn--favourite" onClick={() => favourize()}>
         <Button label="favourize" />
       </span>

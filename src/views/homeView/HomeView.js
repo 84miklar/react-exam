@@ -19,7 +19,7 @@ export const HomeView = () => {
   }, [])
 
   const fetchDiscoverMovie = () => {
-    Axios.get(`${Config.discoverMoviesURL}`)
+    Axios.get(Config.trendingMoviesURL)
       .then((response) => {
         setData(response)
       })
@@ -27,11 +27,9 @@ export const HomeView = () => {
       .catch((error) => console.log(error))
   }
 
-  const fetchDataFromExternalAPI = () => {
+  const fetchSearchDataFromExternalAPI = () => {
     if (search) {
-      Axios.get(
-        `${Config.baseAPI_URL}search/movie?${Config.API_Key}&language=en-US&query=${search}&page=1`
-      )
+      Axios.get(Config.search_URL + search)
         .then((response) => {
           setData(response)
         })
@@ -66,7 +64,7 @@ export const HomeView = () => {
 
   return (
     <div className="home__container">
-      <div className="search__container">
+      <header className="search__container">
         <div className="title">
           <h1>Welcome to a world of global movie entertainement</h1>
         </div>
@@ -78,17 +76,17 @@ export const HomeView = () => {
           }}
           placeholder="Search movies"
           onKeyDown={() => {
-            fetchDataFromExternalAPI()
+            fetchSearchDataFromExternalAPI()
           }}
         ></input>
         <span
           onClick={() => {
-            fetchDataFromExternalAPI()
+            fetchSearchDataFromExternalAPI()
           }}
         >
           <Button label="search" />
         </span>
-      </div>
+      </header>
       <div className="result__container">{loadingCards()}</div>
     </div>
   )

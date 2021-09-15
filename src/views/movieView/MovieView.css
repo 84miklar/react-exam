@@ -82,4 +82,7 @@
   .release__date {
     order: -1;
   }
+  .movie__container {
+    width: 80vw;
+  }
 }

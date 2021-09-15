@@ -6,6 +6,9 @@
   height: 8em;
   gap: 1em;
 }
+.profile:hover {
+  cursor: pointer;
+}
 .profile__username {
   color: var(--clr-accent);
 }
@@ -13,4 +16,13 @@
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
+}
+@media screen and (max-width: 700px) {
+  .profile {
+    flex-direction: column;
+    gap: 0.2em;
+  }
+  .profile__img {
+    margin-top: 0.2em;
+  }
 }

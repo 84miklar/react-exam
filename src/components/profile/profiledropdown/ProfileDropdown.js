@@ -17,7 +17,6 @@ export const ProfileDropdown = () => {
   }
   return (
     <div className="dropdown__container">
-      <p>{localStorage.getItem(LocalStorage.username)}</p>
       <button onClick={() => history.push(RoutingPath.favouritesView)}>
         Favourites
       </button>
