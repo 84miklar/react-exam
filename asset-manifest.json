@@ -1,27 +1,26 @@
 {
   "files": {
-    "main.css": "/react-exam/static/css/main.3911d454.chunk.css",
-    "main.js": "/react-exam/static/js/main.bd5e576b.chunk.js",
-    "main.js.map": "/react-exam/static/js/main.bd5e576b.chunk.js.map",
-    "runtime-main.js": "/react-exam/static/js/runtime-main.96e4690a.js",
-    "runtime-main.js.map": "/react-exam/static/js/runtime-main.96e4690a.js.map",
-    "static/js/2.251c6e43.chunk.js": "/react-exam/static/js/2.251c6e43.chunk.js",
-    "static/js/2.251c6e43.chunk.js.map": "/react-exam/static/js/2.251c6e43.chunk.js.map",
-    "static/js/3.961920b0.chunk.js": "/react-exam/static/js/3.961920b0.chunk.js",
-    "static/js/3.961920b0.chunk.js.map": "/react-exam/static/js/3.961920b0.chunk.js.map",
+    "main.css": "/react-exam/static/css/main.e86b90fb.chunk.css",
+    "main.js": "/react-exam/static/js/main.782a13d1.chunk.js",
+    "main.js.map": "/react-exam/static/js/main.782a13d1.chunk.js.map",
+    "runtime-main.js": "/react-exam/static/js/runtime-main.1fe029ea.js",
+    "runtime-main.js.map": "/react-exam/static/js/runtime-main.1fe029ea.js.map",
+    "static/js/2.718e01db.chunk.js": "/react-exam/static/js/2.718e01db.chunk.js",
+    "static/js/2.718e01db.chunk.js.map": "/react-exam/static/js/2.718e01db.chunk.js.map",
+    "static/js/3.43ee00f3.chunk.js": "/react-exam/static/js/3.43ee00f3.chunk.js",
+    "static/js/3.43ee00f3.chunk.js.map": "/react-exam/static/js/3.43ee00f3.chunk.js.map",
     "index.html": "/react-exam/index.html",
-    "static/css/main.3911d454.chunk.css.map": "/react-exam/static/css/main.3911d454.chunk.css.map",
-    "static/js/2.251c6e43.chunk.js.LICENSE.txt": "/react-exam/static/js/2.251c6e43.chunk.js.LICENSE.txt",
-    "static/media/HomeView.css": "/react-exam/static/media/chairs.81741049.jpg",
+    "static/css/main.e86b90fb.chunk.css.map": "/react-exam/static/css/main.e86b90fb.chunk.css.map",
+    "static/js/2.718e01db.chunk.js.LICENSE.txt": "/react-exam/static/js/2.718e01db.chunk.js.LICENSE.txt",
+    "static/media/HomeView.css": "/react-exam/static/media/woman_eating.c377c3fb.jpg",
     "static/media/AboutView.css": "/react-exam/static/media/couple.60797df0.jpg",
     "static/media/FourOFour.css": "/react-exam/static/media/ofGravity.f70295b5.jpg",
-    "static/media/MovieView.css": "/react-exam/static/media/popcorn.972bff64.jpg",
-    "static/media/woman_eating.c377c3fb.jpg": "/react-exam/static/media/woman_eating.c377c3fb.jpg"
+    "static/media/FavouritesView.css": "/react-exam/static/media/popcorn.972bff64.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.96e4690a.js",
-    "static/js/2.251c6e43.chunk.js",
-    "static/css/main.3911d454.chunk.css",
-    "static/js/main.bd5e576b.chunk.js"
+    "static/js/runtime-main.1fe029ea.js",
+    "static/js/2.718e01db.chunk.js",
+    "static/css/main.e86b90fb.chunk.css",
+    "static/js/main.782a13d1.chunk.js"
   ]
 }
