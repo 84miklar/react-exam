@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react"
 import Axios from "axios"
-import Config from "../../shared/api/config"
+import Config from "../../shared/api/service/config"
 import "./HomeView.css"
 import { MovieCard } from "../../components/cards/MovieCard"
 import { DataContext, DataProvider } from "../../shared/provider/DataProvider"
@@ -8,6 +8,7 @@ import { Button } from "../../components/button/Button"
 import { Spinner } from "../../components/spinner/Spinner"
 import RoutingPath from "../../routes/RoutingPath"
 import { useHistory } from "react-router"
+import { MovieAPIService } from "../../shared/api/service/MovieAPIService"
 
 export const HomeView = () => {
   const [data, setData] = useContext(DataContext)

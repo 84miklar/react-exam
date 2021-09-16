@@ -4,7 +4,7 @@ import "./MovieCard.css"
 import logo from "../../shared/img/chairLogo.png"
 import RoutingPath from "../../routes/RoutingPath"
 import { useHistory } from "react-router"
-import Config from "../../shared/api/config"
+import Config from "../../shared/api/service/config"
 
 export const MovieCard = (props) => {
   const [data, setData] = useContext(DataContext)

@@ -7,7 +7,7 @@ import { useHistory } from "react-router"
 import RoutingPath from "../../routes/RoutingPath"
 import LocalStorage from "../../shared/storage/LocalStorage"
 import Axios from "axios"
-import Config from "../../shared/api/config"
+import Config from "../../shared/api/service/config"
 import { useState } from "react"
 import logo from "../../shared/img/chairLogo.png"
 
