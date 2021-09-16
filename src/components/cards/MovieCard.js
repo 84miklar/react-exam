@@ -11,12 +11,12 @@ export const MovieCard = (props) => {
   const history = useHistory()
 
   const showPoster = () => {
-    if (data.data.results[props.movie].poster_path) {
+    if (data.results[props.movie].poster_path) {
       return (
         <img
           className="poster"
           src={`${Config.movieImageURL}w200/${
-            data.data.results[props.movie].poster_path
+            data.results[props.movie].poster_path
           }`}
           alt="movie poster"
         ></img>
@@ -34,7 +34,7 @@ export const MovieCard = (props) => {
     return (
       <div className="card">
         {showPoster()}
-        <h3>{data.data.results[props.movie].original_title}</h3>
+        <h3>{data.results[props.movie].original_title}</h3>
       </div>
     )
   }

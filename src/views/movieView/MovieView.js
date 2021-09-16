@@ -13,43 +13,42 @@ import { Spinner } from "../../components/spinner/Spinner"
 import RoutingPath from "../../routes/RoutingPath"
 import { Card } from "../../components/cards/Card"
 import LocalStorage from "../../shared/storage/LocalStorage"
+import MovieAPIService from "../../shared/api/service/MovieAPIService"
 
 export const MovieView = () => {
   useEffect(() => {
     getPlayableMovieFromData()
   }, [])
-  const [data, setData] = useContext(DataContext)
+  const [serverData, setServerData] = useContext(DataContext)
   const [movieClip, setMovieClip] = useState()
   const history = useHistory()
   const location = useLocation()
   const chosenMovie = location.state
-  console.log(location.state)
 
   const showMovieIfLoaded = () => {
     if (!movieClip) return <Spinner />
-    if (!movieClip.data.results[0]) return <> </>
-    return <YoutubeEmbed embedId={movieClip.data.results[0].key} />
+    if (!movieClip.results[0]) return <> </>
+    return <YoutubeEmbed embedId={movieClip.results[0].key} />
   }
 
-  const getPlayableMovieFromData = () => {
-    if (data) {
-      Axios.get(
-        `${Config.baseAPI_URL}/movie/${data.data.results[chosenMovie].id}/videos?${Config.API_Key}&language=en-US`
+  const getPlayableMovieFromData = async () => {
+    try {
+      const { data } = await MovieAPIService.getPlayableMovieFromData(
+        serverData.results[chosenMovie].id
       )
-        .then((response) => {
-          setMovieClip(response)
-        })
-
-        .catch((error) => console.log(error))
+      console.log(data)
+      setMovieClip(data)
+    } catch (error) {
+      console.log(error)
     }
   }
 
   const showBackdrop = () => {
-    if (data.data.results[chosenMovie].backdrop_path) {
+    if (serverData.results[chosenMovie].backdrop_path) {
       return (
         <img
           className="movie__backdrop"
-          src={`${Config.movieImageURL}w500/${data.data.results[chosenMovie].backdrop_path}`}
+          src={`${Config.movieImageURL}w500/${serverData.results[chosenMovie].backdrop_path}`}
           alt="movie backdrop"
         ></img>
       )
@@ -63,7 +62,7 @@ export const MovieView = () => {
   }
 
   const favourize = () => {
-    const favouriteID = data.data.results[chosenMovie].id
+    const favouriteID = serverData.results[chosenMovie].id
     LocalStorage.favourites.push(favouriteID)
     localStorage.setItem("favourites", LocalStorage.favourites + favouriteID)
     localStorage[LocalStorage.favourites] = JSON.stringify(
@@ -72,11 +71,11 @@ export const MovieView = () => {
   }
 
   const displayData = () => {
-    if (data) {
+    if (serverData) {
       return (
         <div>
           <h1 className="movie__title">
-            {data.data.results[chosenMovie].original_title}
+            {serverData.results[chosenMovie].original_title}
           </h1>
           <span className="backdrop">{showBackdrop()}</span>
           <div className="movie__data">
@@ -85,21 +84,21 @@ export const MovieView = () => {
             </span>
             <span className="release__date">
               <p>
-                Release date: <br />{" "}
-                {data.data.results[chosenMovie].release_date}
-              </p>
-            </span>
-            <span className="voting">
-              <p>
-                Avarage voting: {data.data.results[chosenMovie].vote_average}{" "}
-                <span>&#40;</span>votes:{" "}
-                {data.data.results[chosenMovie].vote_count}
-                <span>&#41;</span>
+                Release date: <br />
+                {serverData.results[chosenMovie].release_date}
               </p>
             </span>
 
+            <span className="voting">
+              <p>
+                Avarage voting: {serverData.results[chosenMovie].vote_average}
+                <span>&#40;</span>votes:
+                {serverData.results[chosenMovie].vote_count}
+                <span>&#41;</span>
+              </p>
+            </span>
             <span className="overview">
-              <p>{data.data.results[chosenMovie].overview}</p>
+              <p>{serverData.results[chosenMovie].overview}</p>
             </span>
           </div>
           <span className="emebeded__movie">{showMovieIfLoaded()}</span>

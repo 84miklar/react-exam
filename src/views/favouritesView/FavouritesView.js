@@ -1,39 +1,32 @@
 import React, { useContext, useEffect } from "react"
 import "./FavouritesView.css"
-import { MovieCard } from "../../components/cards/MovieCard"
 import { Card } from "../../components/cards/Card"
-import { DataContext } from "../../shared/provider/DataProvider"
-import { useHistory } from "react-router"
-import RoutingPath from "../../routes/RoutingPath"
 import LocalStorage from "../../shared/storage/LocalStorage"
-import Axios from "axios"
 import Config from "../../shared/api/service/config"
 import { useState } from "react"
 import logo from "../../shared/img/chairLogo.png"
+import MovieAPIService from "../../shared/api/service/MovieAPIService"
 
 export const FavouritesView = () => {
   const [favourite, setFavourite] = useState()
-  const history = useHistory()
-  const favs = []
+  const favouritesArray = []
 
   useEffect(() => {
     fetchDataByMovieId()
-    console.log("effect")
   }, [])
 
-  const fetchDataByMovieId = () => {
+  const fetchDataByMovieId = async () => {
     if (LocalStorage.favourites.length > 0) {
       const storedFavourites = JSON.parse(localStorage[LocalStorage.favourites])
-      console.log(storedFavourites)
-      storedFavourites.map(async (el) => {
+
+      storedFavourites.map(async (id) => {
         try {
-          const response = await Axios.get(
-            `${Config.baseAPI_URL}movie/${el}?${Config.API_Key}`
-          )
-          favs.push(response)
-          setFavourite(favs)
+          const { data } = await MovieAPIService.getMovieById(id)
+
+          favouritesArray.push(data)
+          setFavourite(favouritesArray)
         } catch (error) {
-          return console.log(error)
+          console.log(error)
         }
       })
     }
@@ -41,14 +34,14 @@ export const FavouritesView = () => {
 
   const display = () => {
     if (favourite) {
-      console.log("display")
       return favourite.map((item) => {
+        console.log(item)
         return (
           <div>
-            <h3 key={item.data.original_title}>
-              {showPoster(item.data.poster_path)}
+            <h3 key={item.original_title}>
+              {showPoster(item.poster_path)}
               <br />
-              {item.data.original_title}
+              {item.original_title}
             </h3>
           </div>
         )

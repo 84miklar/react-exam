@@ -1,49 +1,58 @@
-import React, { useState, useContext, useEffect } from "react"
-import Axios from "axios"
-import Config from "../../shared/api/service/config"
 import "./HomeView.css"
+import React, { useState, useContext, useEffect } from "react"
+import { useHistory } from "react-router"
 import { MovieCard } from "../../components/cards/MovieCard"
 import { DataContext, DataProvider } from "../../shared/provider/DataProvider"
 import { Button } from "../../components/button/Button"
 import { Spinner } from "../../components/spinner/Spinner"
 import RoutingPath from "../../routes/RoutingPath"
-import { useHistory } from "react-router"
-import { MovieAPIService } from "../../shared/api/service/MovieAPIService"
+import MovieAPIService from "../../shared/api/service/MovieAPIService"
+import { useDebounce } from "../../shared/hooks/useDebounce"
 
 export const HomeView = () => {
-  const [data, setData] = useContext(DataContext)
-  const [search, setSearch] = useState()
+  const [serverData, setServerData] = useContext(DataContext)
+  const [search, setSearch] = useState("")
+  const [loading, setLoading] = useState(true)
   const history = useHistory()
+  const debounceValue = useDebounce(search, 1000)
 
   useEffect(() => {
     fetchDiscoverMovie()
   }, [])
 
-  const fetchDiscoverMovie = () => {
-    Axios.get(Config.trendingMoviesURL)
-      .then((response) => {
-        setData(response)
-      })
+  useEffect(() => {
+    fetchSearchDataFromAPI()
+  }, [debounceValue])
 
-      .catch((error) => console.log(error))
+  const fetchDiscoverMovie = async () => {
+    try {
+      setLoading(true)
+      const { data } = await MovieAPIService.getTrendingMovies()
+      console.log(data)
+      setServerData(data)
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
-  const fetchSearchDataFromExternalAPI = () => {
-    if (search) {
-      Axios.get(Config.search_URL + search)
-        .then((response) => {
-          setData(response)
-        })
-
-        .catch((error) => console.log(error))
+  const fetchSearchDataFromAPI = async () => {
+    try {
+      setLoading(true)
+      const { data } = await MovieAPIService.searchMovie(search)
+      console.log(data)
+      setServerData(data)
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
     }
   }
 
   const displayData = () => {
-    if (data) {
+    if (serverData) {
       return (
         <div className="card__container">
-          {data.data.results.map((el, index) => {
+          {serverData?.results?.map((el, index) => {
             return (
               <span
                 className="movie__poster"
@@ -55,12 +64,9 @@ export const HomeView = () => {
           })}
         </div>
       )
+    } else {
+      return <Spinner />
     }
-  }
-
-  const loadingCards = () => {
-    if (!data) return <Spinner />
-    return displayData()
   }
 
   return (
@@ -76,19 +82,17 @@ export const HomeView = () => {
             setSearch(event.target.value)
           }}
           placeholder="Search movies"
-          onKeyDown={() => {
-            fetchSearchDataFromExternalAPI()
-          }}
         ></input>
         <span
           onClick={() => {
-            fetchSearchDataFromExternalAPI()
+            fetchSearchDataFromAPI()
           }}
         >
           <Button label="search" />
         </span>
       </header>
-      <div className="result__container">{loadingCards()}</div>
+
+      <div className="result__container">{displayData()}</div>
     </div>
   )
 }
