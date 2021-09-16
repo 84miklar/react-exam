@@ -4,7 +4,7 @@ import { DataContext, DataProvider } from "../../shared/provider/DataProvider"
 import "./MovieView.css"
 import logo from "../../shared/img/chairLogo.png"
 import { Button } from "../../components/button/Button"
-import { useHistory } from "react-router"
+import { useHistory, useLocation } from "react-router"
 import Config from "../../shared/api/config"
 import Axios from "axios"
 import { useState, useEffect } from "react/cjs/react.development"
@@ -14,15 +14,16 @@ import RoutingPath from "../../routes/RoutingPath"
 import { Card } from "../../components/cards/Card"
 import LocalStorage from "../../shared/storage/LocalStorage"
 
-export const MovieView = ({ location }) => {
+export const MovieView = () => {
   useEffect(() => {
     getPlayableMovieFromData()
   }, [])
-
   const [data, setData] = useContext(DataContext)
   const [movieClip, setMovieClip] = useState()
   const history = useHistory()
+  const location = useLocation()
   const chosenMovie = location.state
+  console.log(location.state)
 
   const showMovieIfLoaded = () => {
     if (!movieClip) return <Spinner />
