@@ -1,11 +1,9 @@
-import React from "react"
-import "./AboutView.css"
-import { Spinner } from "../../components/spinner/Spinner"
-import { Link } from "react-router-dom"
-import { Button } from "../../components/button/Button"
-import { Card } from "../../components/cards/Card"
+import React from "react";
+import "./AboutView.css";
+import { Button } from "../../components/button/Button";
+import { Card } from "../../components/cards/Card";
 export const AboutView = () => {
-  const tmdb = "https://www.themoviedb.org/"
+  const tmdb = "https://www.themoviedb.org/";
   return (
     <div className="about__container">
       <Card>
@@ -36,5 +34,5 @@ export const AboutView = () => {
         </section>
       </Card>
     </div>
-  )
-}
+  );
+};

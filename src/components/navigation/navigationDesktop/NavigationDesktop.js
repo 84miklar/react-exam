@@ -1,47 +1,30 @@
-import React, { useContext, useState } from "react"
-import "./NavigationDesktop.css"
-import { useHistory } from "react-router-dom"
-import { UserContext } from "../../../shared/provider/UserProvider"
-import RoutingPath from "../../../routes/RoutingPath"
-import logo from "../../../shared/img/chairLogo.png"
-import { Button } from "../../button/Button"
-import { Profile } from "../../profile/Profile"
-import { NavigationDropdown } from "../NavigationDropdown/NavigationDropdown"
+import React, { useContext, useState } from "react";
+import "./NavigationDesktop.css";
+import { useHistory } from "react-router-dom";
+import RoutingPath from "../../../routes/RoutingPath";
+import logo from "../../../shared/img/chairLogo.png";
+import { Button } from "../../button/Button";
+import { NavigationDropdown } from "../NavigationDropdown/NavigationDropdown";
+import { ShowAuthenitcatedUser } from "../../../functions/ShowAuthenticatedUser";
 
 export const NavigationDesktop = () => {
-  const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
-  const [navDropdown, setnavDropdown] = useState(false)
-  const history = useHistory()
-
-  const showAuthenitcatedUser = () => {
-    if (authenticatedUser) {
-      return <Profile />
-    } else {
-      return (
-        <li
-          className="nav__btn--signin"
-          onClick={() => history.push(RoutingPath.signinView)}
-        >
-          <Button label="Sign In" />
-        </li>
-      )
-    }
-  }
+  const [navDropdown, setnavDropdown] = useState(false);
+  const history = useHistory();
 
   const toggleDropdown = () => {
-    if (navDropdown) return <NavigationDropdown />
-  }
+    if (navDropdown) return <NavigationDropdown />;
+  };
   const toggleNavbar = function () {
-    const hamburger = document.querySelector(".hamburger")
+    const hamburger = document.querySelector(".hamburger");
     if (hamburger.classList.contains("hamburger--crossed")) {
-      setnavDropdown(false)
-      hamburger.classList.remove("hamburger--crossed")
+      setnavDropdown(false);
+      hamburger.classList.remove("hamburger--crossed");
     } else {
-      console.log("HEJ")
-      setnavDropdown(true)
-      hamburger.classList.add("hamburger--crossed")
+      console.log("HEJ");
+      setnavDropdown(true);
+      hamburger.classList.add("hamburger--crossed");
     }
-  }
+  };
 
   return (
     <nav className="navDesk__container">
@@ -64,14 +47,14 @@ export const NavigationDesktop = () => {
         >
           <Button label="About" />
         </li>
-        {showAuthenitcatedUser()}
+        {ShowAuthenitcatedUser()}
       </ul>
       {toggleDropdown()}
       <div
         class="hamburger"
         onClick={() => {
           {
-            toggleNavbar()
+            toggleNavbar();
           }
         }}
       >
@@ -80,5 +63,5 @@ export const NavigationDesktop = () => {
         <div class="hamburger__line hamburger__line3"></div>
       </div>
     </nav>
-  )
-}
+  );
+};

@@ -1,7 +1,6 @@
 .home__container {
   text-align: center;
   margin: 0;
-
   height: 100vh;
 }
 .search__container {
@@ -40,6 +39,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 3em;
+  margin: 1em;
 }
 .input {
   height: 2rem;
@@ -56,6 +56,7 @@
   box-shadow: 0 0 15px 15px black inset;
   background-position: center;
   min-height: 40vh;
+  margin: 0;
 }
 .result__header {
   font-size: 1.8rem;

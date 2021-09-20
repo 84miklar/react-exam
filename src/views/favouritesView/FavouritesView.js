@@ -9,7 +9,6 @@ import MovieAPIService from "../../shared/api/service/MovieAPIService"
 
 export const FavouritesView = () => {
   const [favourite, setFavourite] = useState()
-  const favouritesArray = []
 
   useEffect(() => {
     fetchDataByMovieId()
@@ -18,6 +17,7 @@ export const FavouritesView = () => {
   const fetchDataByMovieId = async () => {
     if (LocalStorage.favourites.length > 0) {
       const storedFavourites = JSON.parse(localStorage[LocalStorage.favourites])
+      const favouritesArray = []
 
       storedFavourites.map(async (id) => {
         try {
@@ -31,6 +31,25 @@ export const FavouritesView = () => {
       })
     }
   }
+
+  // const display = () => {
+  //   if (favourite) {
+  //     return Promise.all(favourite).then((item) => {
+  //       console.log(item)
+  //       return (
+  //         <div>
+  //           <h3 key={item.original_title}>
+  //             {showPoster(item.poster_path)}
+  //             <br />
+  //             {item.original_title}
+  //           </h3>
+  //         </div>
+  //       )
+  //     })
+  //   } else {
+  //     return <h2>No favourites yet...</h2>
+  //   }
+  // }
 
   const display = () => {
     if (favourite) {

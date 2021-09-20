@@ -17,7 +17,10 @@ export const ProfileDropdown = () => {
   }
   return (
     <div className="dropdown__container">
-      <button onClick={() => history.push(RoutingPath.favouritesView)}>
+      <button
+        className="btn--favourites"
+        onClick={() => history.push(RoutingPath.favouritesView)}
+      >
         Favourites
       </button>
       <hr />

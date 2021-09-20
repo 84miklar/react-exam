@@ -26,3 +26,6 @@
 .dropdown__container button:hover {
   cursor: pointer;
 }
+.btn--favourites {
+  margin-top: 1em;
+}
