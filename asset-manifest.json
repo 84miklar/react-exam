@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/react-exam/static/css/main.1b82c8bd.chunk.css",
-    "main.js": "/react-exam/static/js/main.2c591a8b.chunk.js",
-    "main.js.map": "/react-exam/static/js/main.2c591a8b.chunk.js.map",
+    "main.js": "/react-exam/static/js/main.24e76db6.chunk.js",
+    "main.js.map": "/react-exam/static/js/main.24e76db6.chunk.js.map",
     "runtime-main.js": "/react-exam/static/js/runtime-main.b6f99c46.js",
     "runtime-main.js.map": "/react-exam/static/js/runtime-main.b6f99c46.js.map",
-    "static/js/2.7af1ebc3.chunk.js": "/react-exam/static/js/2.7af1ebc3.chunk.js",
-    "static/js/2.7af1ebc3.chunk.js.map": "/react-exam/static/js/2.7af1ebc3.chunk.js.map",
+    "static/js/2.c465442c.chunk.js": "/react-exam/static/js/2.c465442c.chunk.js",
+    "static/js/2.c465442c.chunk.js.map": "/react-exam/static/js/2.c465442c.chunk.js.map",
     "static/js/3.eb012e87.chunk.js": "/react-exam/static/js/3.eb012e87.chunk.js",
     "static/js/3.eb012e87.chunk.js.map": "/react-exam/static/js/3.eb012e87.chunk.js.map",
     "index.html": "/react-exam/index.html",
     "static/css/main.1b82c8bd.chunk.css.map": "/react-exam/static/css/main.1b82c8bd.chunk.css.map",
-    "static/js/2.7af1ebc3.chunk.js.LICENSE.txt": "/react-exam/static/js/2.7af1ebc3.chunk.js.LICENSE.txt",
+    "static/js/2.c465442c.chunk.js.LICENSE.txt": "/react-exam/static/js/2.c465442c.chunk.js.LICENSE.txt",
     "static/media/HomeView.css": "/react-exam/static/media/woman_eating.c377c3fb.jpg",
     "static/media/AboutView.css": "/react-exam/static/media/couple.60797df0.jpg",
     "static/media/FourOFour.css": "/react-exam/static/media/ofGravity.f70295b5.jpg",
@@ -19,8 +19,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.b6f99c46.js",
-    "static/js/2.7af1ebc3.chunk.js",
+    "static/js/2.c465442c.chunk.js",
     "static/css/main.1b82c8bd.chunk.css",
-    "static/js/main.2c591a8b.chunk.js"
+    "static/js/main.24e76db6.chunk.js"
   ]
 }
