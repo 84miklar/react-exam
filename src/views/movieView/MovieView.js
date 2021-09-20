@@ -114,7 +114,10 @@ export const MovieView = () => {
         <span className="btn--favourite" onClick={() => favourize()}>
           <Button label="favourize" />
         </span>
-        <span className="btn--search" onClick={() => history.goBack()}>
+        <span
+          className="btn--search"
+          onClick={() => history.push(RoutingPath.homeView)}
+        >
           <Button label="new search" />
         </span>
       </div>

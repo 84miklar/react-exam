@@ -5,15 +5,15 @@ import logo from "../../shared/img/chairLogo.png";
 import Config from "../../shared/api/service/config";
 
 export const MovieCard = (props) => {
-  const [data, setData] = useContext(DataContext);
+  const [serverData, setServerData] = useContext(DataContext);
 
   const showPoster = () => {
-    if (data.results[props.movie].poster_path) {
+    if (serverData.results[props.movie].poster_path) {
       return (
         <img
           className="poster"
           src={`${Config.movieImageURL}w200/${
-            data.results[props.movie].poster_path
+            serverData.results[props.movie].poster_path
           }`}
           alt="movie poster"
         ></img>
@@ -27,11 +27,11 @@ export const MovieCard = (props) => {
     }
   };
 
-  if (data) {
+  if (serverData) {
     return (
       <div className="card">
         {showPoster()}
-        <h3>{data.results[props.movie].original_title}</h3>
+        <h3>{serverData.results[props.movie].original_title}</h3>
       </div>
     );
   }
