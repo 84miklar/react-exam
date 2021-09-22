@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
 import "./NavigationDesktop.css";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import RoutingPath from "../../../routes/RoutingPath";
 import logo from "../../../shared/img/chairLogo.png";
@@ -9,6 +9,7 @@ import { ShowAuthenitcatedUser } from "../../../functions/ShowAuthenticatedUser"
 
 export const NavigationDesktop = () => {
   const [navDropdown, setnavDropdown] = useState(false);
+
   const history = useHistory();
 
   const toggleDropdown = () => {
@@ -20,7 +21,6 @@ export const NavigationDesktop = () => {
       setnavDropdown(false);
       hamburger.classList.remove("hamburger--crossed");
     } else {
-      console.log("HEJ");
       setnavDropdown(true);
       hamburger.classList.add("hamburger--crossed");
     }
@@ -41,6 +41,30 @@ export const NavigationDesktop = () => {
         >
           <Button label="Home" />
         </li>
+
+        <li className="nav__btn--movies">
+          <Button label="Movies" />
+          <div className="movies--dropdown ">
+            <button
+              className="movies--btn_toprated"
+              onClick={() => history.push(RoutingPath.topRatedView)}
+            >
+              Top Rated
+            </button>
+            <button
+              className="movies--btn_upcoming"
+              onClick={() => history.push(RoutingPath.upcomingView)}
+            >
+              Upcoming
+            </button>
+            <button
+              className="movies--btn_nowplaying"
+              onClick={() => history.push(RoutingPath.nowPlaying)}
+            >
+              Now playing
+            </button>
+          </div>
+        </li>
         <li
           className="nav__btn--about"
           onClick={() => history.push(RoutingPath.aboutView)}
@@ -53,9 +77,7 @@ export const NavigationDesktop = () => {
       <div
         class="hamburger"
         onClick={() => {
-          {
-            toggleNavbar();
-          }
+          toggleNavbar();
         }}
       >
         <div class="hamburger__line hamburger__line1"></div>

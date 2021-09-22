@@ -14,6 +14,9 @@ const getUpcomingMovies = () => {
 const getHighRankMovies = () => {
   return http.get(Config.highRankMoviesURL);
 };
+const getNowPlayingMovies = () => {
+  return http.get(Config.nowPlayingURL);
+};
 const getPlayableMovieFromData = (movieId) => {
   return http.get(`movie/${movieId}/videos?${Config.API_Key}&language=en-US`);
 };
@@ -28,4 +31,5 @@ export default {
   getMovieById,
   getUpcomingMovies,
   getHighRankMovies,
+  getNowPlayingMovies,
 };

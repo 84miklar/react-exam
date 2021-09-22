@@ -24,7 +24,7 @@ export const UpcomingView = () => {
   };
 
   return (
-    <div>
+    <div className="upcoming__container">
       <h2 className="upcoming__title">Upcoming movies in Sweden</h2>
       {DisplayData(loading)}
     </div>

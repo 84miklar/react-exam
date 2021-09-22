@@ -2,6 +2,7 @@ import "./MovieView.css";
 import React, { useContext, useState, useEffect } from "react";
 import { MovieCard } from "../../components/cards/MovieCard";
 import { DataContext, DataProvider } from "../../shared/provider/DataProvider";
+import { UserContext } from "../../shared/provider/UserProvider";
 import logo from "../../shared/img/chairLogo.png";
 import { Button } from "../../components/button/Button";
 import { useHistory, useLocation } from "react-router";
@@ -17,6 +18,7 @@ export const MovieView = () => {
   useEffect(() => {
     getPlayableMovieFromData();
   }, []);
+  const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext);
   const [serverData, setServerData] = useContext(DataContext);
   const [movieClip, setMovieClip] = useState();
   const history = useHistory();
@@ -66,6 +68,7 @@ export const MovieView = () => {
     localStorage[LocalStorage.favourites] = JSON.stringify(
       LocalStorage.favourites
     );
+    document.querySelector(".btn--favourite").style.backgroundColor = "#cfb584";
   };
 
   const displayData = () => {
@@ -107,13 +110,21 @@ export const MovieView = () => {
     }
   };
 
+  const showButtonIfAuthenticated = () => {
+    return authenticatedUser ? (
+      <span className="btn--favourite" onClick={() => favourize()}>
+        <Button label="favourize" />
+      </span>
+    ) : (
+      <div />
+    );
+  };
+
   return (
     <div className="movieView__container">
       <Card>{displayData()}</Card>
       <div className="btns">
-        <span className="btn--favourite" onClick={() => favourize()}>
-          <Button label="favourize" />
-        </span>
+        {showButtonIfAuthenticated()}
         <span
           className="btn--search"
           onClick={() => history.push(RoutingPath.homeView)}

@@ -1,21 +1,21 @@
-import "./HighestRankView.css";
-import { DisplayData } from "../../functions/DisplayData";
+import "./NowPlayingView.css";
 import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../shared/provider/DataProvider";
 import MovieAPIService from "../../shared/api/service/MovieAPIService";
+import { DisplayData } from "../../functions/DisplayData";
 
-export const HighestRankView = () => {
+export const NowPlayingView = () => {
   const [serverData, setServerData] = useContext(DataContext);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchHighRankMovies();
+    fetchNowPlayingMovies();
   }, []);
 
-  const fetchHighRankMovies = async () => {
+  const fetchNowPlayingMovies = async () => {
     try {
       setLoading(true);
-      const { data } = await MovieAPIService.getHighRankMovies();
+      const { data } = await MovieAPIService.getNowPlayingMovies();
       setServerData(data);
       setLoading(false);
     } catch (error) {
@@ -24,8 +24,8 @@ export const HighestRankView = () => {
   };
 
   return (
-    <div className="toprated__container">
-      <h2 className="upcoming__title">Top rated movies in Sweden</h2>
+    <div className="nowplaying__container">
+      <h2 className="nowplaying__title">Playing now in theatres in Sweden</h2>
       {DisplayData(loading)}
     </div>
   );

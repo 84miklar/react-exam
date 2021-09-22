@@ -1,5 +1,5 @@
-.upcoming__container {
-  background-image: url("../../shared/img/people.jpg");
+.nowplaying__container {
+  background-image: url("../../shared/img/popcorn.jpg");
   background-size: cover;
   background-position: center;
   box-shadow: 0 0 30px 30px black inset;

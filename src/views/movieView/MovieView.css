@@ -64,7 +64,6 @@
 }
 .btns {
   display: flex;
-  gap: 1em;
   justify-content: center;
 }
 

@@ -3,7 +3,9 @@ const aboutView = "/about";
 const movieView = "/movie";
 const signinView = "/signin";
 const favouritesView = "/favourites";
-const upcoming = "/upcoming";
+const upcomingView = "/upcoming";
+const topRatedView = "/toprated";
+const nowPlaying = "/nowplaying";
 
 export default {
   homeView,
@@ -11,5 +13,7 @@ export default {
   movieView,
   signinView,
   favouritesView,
-  upcoming,
+  upcomingView,
+  topRatedView,
+  nowPlaying,
 };
