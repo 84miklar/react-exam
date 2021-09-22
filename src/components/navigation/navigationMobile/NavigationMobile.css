@@ -1,0 +1,41 @@
+@media screen and (max-width: 700px) {
+  .nav__btns {
+    display: none;
+  }
+  .hamburger {
+    position: absolute;
+    border: solid 1.2px black;
+    background-color: white;
+    right: 1em;
+    height: 2em;
+    width: 2em;
+    display: grid;
+    place-items: center;
+    align-content: space-around;
+    border-radius: 0.3em;
+  }
+  .hamburger:hover {
+    cursor: pointer;
+  }
+  .hamburger__line {
+    height: 0.2em;
+    width: 1.2em;
+    background-color: black;
+  }
+  .hamburger__line1,
+  .hamburger__line2,
+  .hamburger__line3 {
+    transition: 400ms;
+  }
+
+  .hamburger--crossed .hamburger__line1 {
+    transform: translateY(0.6rem) rotate(45deg);
+  }
+  .hamburger--crossed .hamburger__line2 {
+    transform: translateY(1.4em);
+    opacity: 0;
+  }
+  .hamburger--crossed .hamburger__line3 {
+    transform: translateY(-0.6rem) rotate(-45deg);
+  }
+}

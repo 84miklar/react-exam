@@ -1,20 +1,12 @@
-import React, { useEffect } from "react"
-import { NavigationDesktop } from "./navigationDesktop/NavigationDesktop"
-import { NavigationMobile } from "./navigationMobile/NavigationMobile"
-
+import React, { useEffect } from "react";
+import { NavigationDesktop } from "./navigationDesktop/NavigationDesktop";
+import { NavigationMobile } from "./navigationMobile/NavigationMobile";
+import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 export const Navigation = () => {
-  useEffect(() => {
-    console.log(window.innerWidth)
-  })
+  const { width, height } = useWindowDimensions();
+  const displayNavigation = () => {
+    return width <= 700 ? <NavigationMobile /> : <NavigationDesktop />;
+  };
 
-  const setNavigation = () => {
-    if (window.innerWidth > 950) return <NavigationDesktop />
-    else return <NavigationMobile />
-  }
-
-  return (
-    <React.Fragment>
-      <NavigationDesktop />
-    </React.Fragment>
-  )
-}
+  return <div>{displayNavigation()}</div>;
+};
