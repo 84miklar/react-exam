@@ -25,7 +25,7 @@ export const SignInView = () => {
 
   return (
     <div className="signin__container">
-      <span className="input">
+      <span className="user__input">
         <h1>Sign In</h1>
         <input
           type="text"
