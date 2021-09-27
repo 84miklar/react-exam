@@ -8,7 +8,7 @@ import logo from "../../shared/img/chairLogo.png";
 import MovieAPIService from "../../shared/api/service/MovieAPIService";
 
 export const FavouritesView = () => {
-  const [favourite, setFavourite] = useState();
+  const [favourite, setFavourite] = useState([]);
 
   useEffect(() => {
     fetchDataByMovieId();
@@ -19,14 +19,14 @@ export const FavouritesView = () => {
       const storedFavourites = JSON.parse(
         localStorage[LocalStorage.favourites]
       );
-      const favouritesArray = [];
 
       storedFavourites.map(async (id) => {
         try {
           const { data } = await MovieAPIService.getMovieById(id);
 
-          favouritesArray.push(data);
-          setFavourite(favouritesArray);
+          setFavourite((prevFavourites) => {
+            return [data, ...prevFavourites];
+          });
         } catch (error) {
           console.log(error);
         }
@@ -35,7 +35,7 @@ export const FavouritesView = () => {
   };
 
   const display = () => {
-    if (favourite) {
+    if (favourite.length > 0) {
       return favourite.map((item) => {
         console.log(item);
         return (
